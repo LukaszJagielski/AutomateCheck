@@ -178,7 +178,6 @@ ______ _   _ _____   _                 _
             quit()
 
         elif choice == 7:
-            d3 = input('Enter URL Or Domain : ')
             os.system("clear")
             print("""
 __      _________    _    _ _____  _          _____ _               _    
@@ -187,13 +186,38 @@ __      _________    _    _ _____  _          _____ _               _
   \ \/ /    | |     | |  | |  _  /| |       | |    | '_ \ / _ \/ __| |/ /
    \  /     | |     | |__| | | \ \| |____   | |____| | | |  __/ (__|   < 
     \/      |_|      \____/|_|  \_\______|   \_____|_| |_|\___|\___|_|\_\    
+
+
+
                                   
+  {1}--Domain
+  {2}--URL
+
   """)
-            Requests.VT_URL(d3)
-            questionSingle(d3)
-            print("")
-            print("")
-            quit()
+            menudomain = input("AutomateCheck~# ")
+            menudomain = int(menudomain)
+            print(menudomain)
+            if menudomain == 1:
+              os.system("clear")
+              d3 = input('Enter Domain: ')
+              os.system("clear")
+              Requests.VT_DOMAIN(d3)
+              questionSingle(d3)
+              print("")
+              print("")
+            if menudomain ==2:
+              os.system("clear")
+              d3 = input('Enter URL: ')
+              os.system("clear")
+              Requests.VT_URL(d3)
+              questionSingle(d3)
+              print("")
+              print("")
+              quit()
+            else:
+              os.system("clear")
+              print("Wrong character!")
+              quit()
         elif choice == 8:
             d3 = input('Enter MD5 : ')
             os.system("clear")

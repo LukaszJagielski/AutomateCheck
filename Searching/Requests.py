@@ -13,31 +13,28 @@ response = 0
 
 def get_status_code(response_site):
 	if response_site.status_code == 200:
-		print("- Status zadania: 200 - OK")
+		print("- Status:  200 - OK")
 		s()
 	elif response_site.status_code == 404:
-		print("- Status zadania: 404 - Not Found")
+		print("- Status: 404 - Not Found")
 	elif response_site.status_code == 301:
-		print("- Status zadania: 301 - Moved Permanently")
+		print("- Status: 301 - Moved Permanently")
 		s()
 	elif response_site.status_code == 502:
-		print("- Status zadania: 502 - Bad Gateway")
+		print("- Status: 502 - Bad Gateway")
 	else:
-		print("Nieznane zadanie")
+		print("Unknown status")
 
 def redirect(response_site):
 	if response_site.is_redirect == False:
-		print("- Brak przekierowania na stronie internetowej")
+		print("- There is no redirect agent on the website")
 	else:
-		print("- Istnieja przekierowania na stronie internetowej")
+		print("- Redirect agent on the website")
 		s()
 
 def s():
 	global score
 	score += 1
-def d():
-	global VT_Score
-	VT_Score += 1
 
 def how_many(response_site):
 	print("How much .vbs extension: ", response_site.text.count('.vbs'))
@@ -51,8 +48,7 @@ def how_many(response_site):
 
 	print("Score is: ", score)
 
-def VT_URL(d3):
-	global VT_Score
+def VT_DOMAIN(d3):
 	config_read = open("config.txt","r")
 	apikey = config_read
 	url = 'https://www.virustotal.com/vtapi/v2/url/report'
@@ -79,7 +75,6 @@ def VT_URL(d3):
 			print('Registered name: ', url_whois.registrar)
 			print("- Webstie is categorize as malicious by more than 2 AV in VirusTotal")
 			print('Numbers of AV which recognize file as malicious: ', response_json['positives'])
-			d()
 			print("Last scan of VirusTotal: ", response_json['scan_date'])
 			get_status_code(response_site)
 			redirect(response_site)
@@ -98,9 +93,48 @@ def VT_URL(d3):
 			parse_all_links(response_site_txt)
 			how_many(response_site)
 
+def VT_URL(d3):
+	config_read = open("config.txt","r")
+	apikey = config_read
+	url = 'https://www.virustotal.com/vtapi/v2/url/report'
+
+	d4 = 'http://'
+	site = d4 + d3
+
+	print('Which URLs I check:', site)
+	print('\n')
+
+	if site:
+		
+		params = {'apikey': apikey,'resource': site }
+		response = requests.get(url, params=params)
+		response_site = requests.get(site)
+		response_site_txt = response_site.text
+		response_json = response.json()
+
+		if response_json['response_code'] == 0:
+			print("Virus total not recognize this URL")
+			exit()
+
+		if response_json['positives'] >= 2:
+			print("- Webstie is categorize as malicious by more than 2 AV in VirusTotal")
+			print('Numbers of AV which recognize file as malicious: ', response_json['positives'])
+			print("Last scan of VirusTotal: ", response_json['scan_date'])
+			get_status_code(response_site)
+			redirect(response_site)
+			parse_all_links(response_site_txt)
+			how_many(response_site)
+		else:
+			print("- Website is not categorize as malicious\n")
+			print('Numbers of AV which recognize file as malicious: ', response_json['positives'])
+			print("Last scan of VirusTotal: ", response_json['scan_date'])
+			get_status_code(response_site)
+			redirect(response_site)
+			parse_all_links(response_site_txt)
+			how_many(response_site)
+
 
 def VT_MD5(d3):
-	global VT_Score
 	config_read = open("config.txt","r")
 	apikey = config_read
 	url = 'https://www.virustotal.com/vtapi/v2/file/report'
@@ -109,7 +143,6 @@ def VT_MD5(d3):
 
 	print('Which MD5 I check: ', file)
 	print('\n')
-
 
 	if file:
 
@@ -123,7 +156,6 @@ def VT_MD5(d3):
 				print('Last scan of VirusTotal: ', response_json['scan_date'])
 				print('Numbers of AV which recognize file as malicious: ', response_json['positives'])
 				print('\n')
-				d()
 				print("Analyze by VirustTotal: ", response_json['permalink'])
 				print("File is categorize as malicious by more than 2 AV in VirusTotal")
 			else:
@@ -132,7 +164,6 @@ def VT_MD5(d3):
 				print('Last scan of VirusTotal: ', response_json['scan_date'])
 				print('Numbers of AV which recognize file as malicious: ', response_json['positives'])
 				print('\n')
-				d()
 				print("File is not categorize as malicious")
 		elif response_json['response_code'] == 0:
 			print('I check file:', response_json['resource'])
