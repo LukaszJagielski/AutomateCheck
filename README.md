@@ -5,20 +5,7 @@ Script using simple os.system commands and two APIs website. Virus Total and Hac
 
 Remember to paste your Virus Total API Key to config.txt
 
-Installation:
-
-1. Run in terminal "python Install.py"
-2. Download geckodriver-v0.26.0-linux64.tar.gz from https://github.com/mozilla/geckodriver/releases copy driver to your PATH, e. g., place it in /usr/bin or /usr/local/bin.
-3. Run script using "python AutomateCheck.py"
-
-
-Requirements:
-Firefox 68.7 or less
-pip module from (pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4) https://pip.pypa.io/en/stable/installing/ 
-geckodriver-v0.26.0-linux64.tar.gz - https://github.com/mozilla/geckodriver/releases
-Modules from install.py
-
-# Description
+# What can i do?
 
 [![Screenshot-2020-09-29-04-10-48.png](https://i.postimg.cc/Hxmynqbz/Screenshot-2020-09-29-04-10-48.png)](https://postimg.cc/8Fy5nnKf)
 
@@ -31,13 +18,25 @@ Modules from install.py
 {6} - Discover web hosts sharing an IP address with a reverse IP lookup.\
 {7} - Checking domain or URL, also count extension (vbs, vbe, exe, iso, js, jar, zip, py), links and can give you a screenshot of website.\
 {8} - Show how many numbers of AV recognize file as malicious and when was last scan of Virust Total.\
-{99} - Exit from script\
+{99} - Exit from script
 
 -------------------------------------------------------------------------------------------------------------------------------------------
 {9} - Same as number 7 but you can check many URL. Copy and paste URL to search.txt, save and run script.\
-{0} - Same as number 8 but you can check many MD5. Copy and paste MD5 to search.txt, save and run script.\
+{0} - Same as number 8 but you can check many MD5. Copy and paste MD5 to search.txt, save and run script.
 
 -------------------------------------------------------------------------------------------------------------------------------------------
-{10} - This option give you 1,2,3,5,7 options for single URL.\
+{10} - This option give you 1,2,3,5,7 options for single URL.
 
+# Requirements:
+
+1. Firefox 68.7 or less
+2. pip module from (pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4) https://pip.pypa.io/en/stable/installing/ 
+3. geckodriver-v0.26.0-linux64.tar.gz - https://github.com/mozilla/geckodriver/releases
+4. Modules from install.py
+5. Virus total API KEY
+
+# Installation:
+1. Run in terminal "python Install.py"
+2. Download geckodriver-v0.26.0-linux64.tar.gz from https://github.com/mozilla/geckodriver/releases copy driver to your PATH, e. g., place it in /usr/bin or /usr/local/bin.
+3. Run script using "python AutomateCheck.py"
 
