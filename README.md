@@ -42,7 +42,7 @@ Also there is scoring point in code, but it's still in build progress.
 5. Virus total API KEY
 
 # Installation:
-1. Run in terminal "python Install.py"
+1. Run in terminal "python3 Install.py"
 2. Download geckodriver-v0.26.0-linux64.tar.gz from https://github.com/mozilla/geckodriver/releases copy driver to your PATH, e. g., place it in /usr/bin or /usr/local/bin.
-3. Run script using "python AutomateCheck.py"
+3. Run script using "python3 AutomateCheck.py"
 
