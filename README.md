@@ -3,7 +3,13 @@ Check domain, URL, MD5
 
 Script using simple os.system commands and two APIs website. Virus Total and Hackertarget. For option 1,2,3,5,6 there is a limit of 100 API calls per day from a single IP address and for 7,8,9,0 option depends on the subscription plan on Virus Total
 
-Remember to paste your Virus Total API Key to config.txt
+Remember to paste your Virus Total API Key to config.txt !
+
+The core of script is checking domain or URL, also counting extension (vbs, vbe, exe, iso, js, jar, zip, py), links and give you a screenshot of website. This may help to do quick analysis.
+
+[![VT-Check.png](https://i.postimg.cc/KctbhQrZ/VT-Check.png)](https://postimg.cc/yW6tFmb5)
+
+Also there is scoring point in code, but it's still in build progress.
 
 # What can i do?
 
